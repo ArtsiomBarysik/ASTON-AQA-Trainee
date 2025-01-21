@@ -3,8 +3,7 @@ import org.example.Main;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class HomeWork14Tests {
     @Test
@@ -20,15 +19,17 @@ public class HomeWork14Tests {
     @Test
     @DisplayName("Проверка функции на отрицательное число")
     public void factorialWithNegativeNumber() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        IllegalArgumentException excepcion = assertThrows(IllegalArgumentException.class, () -> {
             Main.getFactorial(-1);
         });
+        assertEquals("Число не может быть отрицательным", excepcion.getMessage());
     }
     @Test
     @DisplayName("Проверка функции на недопустимое число")
     public void factorialWithBigNumber() {
-        IllegalArgumentException exception = assertThrows(IllegalArgumentException.class, () -> {
+        IllegalArgumentException excepcion = assertThrows(IllegalArgumentException.class, () -> {
             Main.getFactorial(32);
         });
+        assertEquals("Число не может быть больше 31", excepcion.getMessage());
     }
 }
