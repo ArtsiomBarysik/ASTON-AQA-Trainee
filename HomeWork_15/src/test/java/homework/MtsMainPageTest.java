@@ -28,11 +28,11 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     static String expectedSumPlaceholder = "Сумма";
     static String expectedEmailPlaceholder = "E-mail для отправки чека";
 
-    static MtsMainPage mtsMainPage;
 
     @Test
     @DisplayName("Проверка названия блока")
     public void checkTitleBlock() {
+        MtsMainPage mtsMainPage = new MtsMainPage();
         String actualTitle = mtsMainPage.getBlockTitle();
         assertEquals(expectedTitle, actualTitle);
         if (expectedTitle.equals(actualTitle)) {
@@ -43,12 +43,14 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     @Test
     @DisplayName("Проверка наличия логотипов платежных систем")
     public void checkLogo() {
+        MtsMainPage mtsMainPage = new MtsMainPage();
         assertTrue(mtsMainPage.arePaymentLogoDisplayed());
     }
 
     @Test
     @DisplayName("Проверка ссылки 'Подробнее о сервисе'")
     public void checkMoreInfoLink() {
+        MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.clickMoreInfoLink();
         assertTrue(driver.getCurrentUrl().contains(moreInfoUrl));
         driver.navigate().back();
@@ -57,6 +59,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     @Test
     @DisplayName("Проверка заполнения формы оплаты телефона")
     public void checkPaymentPhone() {
+        MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.fillAndSubmitForm(phone, sum);
         mtsMainPage.switchToPayIframe();
 
@@ -68,6 +71,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     @Test
     @DisplayName("Проверка плэйсходеров в форме оплаты телефона")
     public void checkPlaceholderPhone() {
+        MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.fillAndSubmitForm(phone, sum);
         mtsMainPage.switchToPayIframe();
 
@@ -80,6 +84,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     @Test
     @DisplayName("Проверка логотипов платежных карт в форме оплаты")
     public void checkLogoCardOrder() {
+        MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.fillAndSubmitForm(phone, sum);
         mtsMainPage.switchToPayIframe();
 
@@ -90,6 +95,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     @Test
     @DisplayName("Проверка плейсхолдеров оплаты услуг связи")
     public void checkPlaceholdersPhone() {
+        MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.selectPhoneServices();
         assertTrue(mtsMainPage.comparePhonePhonePlaceholder(expectedPhonePhonePlaceholder));
         assertTrue(mtsMainPage.comparePhoneSumPlaceholder(expectedSumPlaceholder));
@@ -99,6 +105,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     @Test
     @DisplayName("Проверка плейсхолдеров оплаты интернета")
     public void checkPlaceholdersInternet() {
+        MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.selectInternetServices();
         assertTrue(mtsMainPage.compareInternetPhonePlaceholder(expectedInternetPhonePlaceholder));
         assertTrue(mtsMainPage.compareInternetSumPlaceholder(expectedSumPlaceholder));
@@ -108,6 +115,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     @Test
     @DisplayName("Проверка плейсхолдеров оплаты рассрочки")
     public void checkPlaceholdersInstallment() {
+        MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.selectInstallmentServices();
         assertTrue(mtsMainPage.compareInstallmentPhonePlaceholder(expectedInstallmentPhonePlaceholder));
         assertTrue(mtsMainPage.compareInstallmentSumPlaceholder(expectedSumPlaceholder));
@@ -117,6 +125,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     @Test
     @DisplayName("Проверка плейсхолдеров оплаты задолженности")
     public void checkPlaceholdersArrears() {
+        MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.selectArrearsServices();
         assertTrue(mtsMainPage.compareArrearsPhonePlaceholder(expectedArrearsPhonePlaceholder));
         assertTrue(mtsMainPage.compareArrearsSumPlaceholder(expectedSumPlaceholder));
