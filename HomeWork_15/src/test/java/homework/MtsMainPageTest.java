@@ -17,20 +17,20 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     // Проверочные данные для данных карты в форме оплаты
     static String expectedNumberCard = "Номер карты";
     static String expectedDurationCard = "Срок действия";
-    static String expectedCvcCard = "CVC";
-    static String expectedHolderCard = "Имя держателя (как на карте)";
+    static String expectedCvcCard ="CVC";
+    static String expectedHolderCard ="Имя держателя (как на карте)";
     // Проверочные плейсхолдеры номера телефона/счета для вариантов услуг
-    static String expectedPhonePhonePlaceholder = "Номер телефона";
-    static String expectedInternetPhonePlaceholder = "Номер абонента";
-    static String expectedInstallmentPhonePlaceholder = "Номер счета на 44";
-    static String expectedArrearsPhonePlaceholder = "Номер счета на 2073";
+    static String expectedPhonePhonePlaceholder ="Номер телефона";
+    static String expectedInternetPhonePlaceholder ="Номер абонента";
+    static String expectedInstallmentPhonePlaceholder ="Номер счета на 44";
+    static String expectedArrearsPhonePlaceholder ="Номер счета на 2073";
     // Проверочные плейсхолдеры для полей суммы и емайла для всех вариантов услуг
-    static String expectedSumPlaceholder = "Сумма";
-    static String expectedEmailPlaceholder = "E-mail для отправки чека";
+    static String expectedSumPlaceholder ="Сумма";
+    static String expectedEmailPlaceholder ="E-mail для отправки чека";
 
     @Test
     @DisplayName("Проверка названия блока")
-    public void checkTitleBlock() {
+    public void checkTitleBlock(){
         MtsMainPage mtsMainPage = new MtsMainPage();
         String actualTitle = mtsMainPage.getBlockTitle();
         assertEquals(expectedTitle, actualTitle);
@@ -48,7 +48,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
 
     @Test
     @DisplayName("Проверка ссылки 'Подробнее о сервисе'")
-    public void checkMoreInfoLink() {
+    public void checkMoreInfoLink(){
         MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.clickMoreInfoLink();
         assertTrue(driver.getCurrentUrl().contains(moreInfoUrl));
@@ -59,7 +59,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
     @DisplayName("Проверка заполнения формы оплаты телефона")
     public void checkPaymentPhone() {
         MtsMainPage mtsMainPage = new MtsMainPage();
-        mtsMainPage.fillAndSubmitForm(phone, sum);
+        mtsMainPage.fillAndSubmitForm(phone,sum);
         mtsMainPage.switchToPayIframe();
 
         assertTrue(mtsMainPage.compareSumDescriptionOrder(sum));
@@ -69,9 +69,9 @@ public class MtsMainPageTest extends BaseSeleniumTest {
 
     @Test
     @DisplayName("Проверка плэйсходеров в форме оплаты телефона")
-    public void checkPlaceholderPhone() {
+    public void checkPlaceholderPhone(){
         MtsMainPage mtsMainPage = new MtsMainPage();
-        mtsMainPage.fillAndSubmitForm(phone, sum);
+        mtsMainPage.fillAndSubmitForm(phone,sum);
         mtsMainPage.switchToPayIframe();
 
         assertTrue(mtsMainPage.compareNumberLabel(expectedNumberCard));
@@ -82,9 +82,9 @@ public class MtsMainPageTest extends BaseSeleniumTest {
 
     @Test
     @DisplayName("Проверка логотипов платежных карт в форме оплаты")
-    public void checkLogoCardOrder() {
+    public void checkLogoCardOrder(){
         MtsMainPage mtsMainPage = new MtsMainPage();
-        mtsMainPage.fillAndSubmitForm(phone, sum);
+        mtsMainPage.fillAndSubmitForm(phone,sum);
         mtsMainPage.switchToPayIframe();
 
         assertTrue(mtsMainPage.areVisibleCardsLogoDisplayed());
@@ -93,7 +93,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
 
     @Test
     @DisplayName("Проверка плейсхолдеров оплаты услуг связи")
-    public void checkPlaceholdersPhone() {
+    public void checkPlaceholdersPhone(){
         MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.selectPhoneServices();
         assertTrue(mtsMainPage.comparePhonePhonePlaceholder(expectedPhonePhonePlaceholder));
@@ -103,7 +103,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
 
     @Test
     @DisplayName("Проверка плейсхолдеров оплаты интернета")
-    public void checkPlaceholdersInternet() {
+    public void checkPlaceholdersInternet(){
         MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.selectInternetServices();
         assertTrue(mtsMainPage.compareInternetPhonePlaceholder(expectedInternetPhonePlaceholder));
@@ -113,7 +113,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
 
     @Test
     @DisplayName("Проверка плейсхолдеров оплаты рассрочки")
-    public void checkPlaceholdersInstallment() {
+    public void checkPlaceholdersInstallment(){
         MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.selectInstallmentServices();
         assertTrue(mtsMainPage.compareInstallmentPhonePlaceholder(expectedInstallmentPhonePlaceholder));
@@ -123,7 +123,7 @@ public class MtsMainPageTest extends BaseSeleniumTest {
 
     @Test
     @DisplayName("Проверка плейсхолдеров оплаты задолженности")
-    public void checkPlaceholdersArrears() {
+    public void checkPlaceholdersArrears(){
         MtsMainPage mtsMainPage = new MtsMainPage();
         mtsMainPage.selectArrearsServices();
         assertTrue(mtsMainPage.compareArrearsPhonePlaceholder(expectedArrearsPhonePlaceholder));
