@@ -1,12 +1,15 @@
 package homework;
 
 import core.BaseSeleniumTest;
+import core.TestListener;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-
+@ExtendWith(TestListener.class)
+@DisplayName("Тесты блока 'Онлайн пополнение без комиссии'")
 public class MtsMainPageTest extends BaseSeleniumTest {
     // Проверочные данные Заголовка и ссылка на подробнее о сервисе
     static String expectedTitle = "Онлайн пополнение без комиссии";

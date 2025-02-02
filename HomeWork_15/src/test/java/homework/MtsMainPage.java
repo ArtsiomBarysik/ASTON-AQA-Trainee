@@ -115,11 +115,11 @@ public class MtsMainPage extends BaseSeleniumPage {
             System.out.println("Окно с куки файлами не появилось");
         }
     }
-    // Получение заголовка блока
+
     public String getBlockTitle() {
         return paySectionTitle.getText().replaceAll("\\s+", " ").trim();
     }
-    // Проверка отображения всех логотипов
+
     public boolean arePaymentLogoDisplayed() {
         boolean allLogoFound = true;
         for (WebElement logo : payParthnersLogo) {
@@ -132,7 +132,7 @@ public class MtsMainPage extends BaseSeleniumPage {
         }
         return allLogoFound;
     }
-    // Клик на ссылку подробнее о сервисе
+
     public void clickMoreInfoLink() {
         moreInfoLink.click();
     }

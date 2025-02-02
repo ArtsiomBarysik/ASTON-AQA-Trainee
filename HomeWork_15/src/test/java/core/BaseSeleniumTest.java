@@ -20,10 +20,4 @@ abstract public class BaseSeleniumTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         BaseSeleniumPage.setDriver(driver);
     }
-
-    @AfterEach
-    public void tearDown() {
-        driver.close();
-        driver.quit();
-    }
 }
