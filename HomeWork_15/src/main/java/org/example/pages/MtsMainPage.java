@@ -1,4 +1,4 @@
-package homework;
+package org.example.pages;
 
 import core.BaseSeleniumPage;
 import org.openqa.selenium.WebElement;
